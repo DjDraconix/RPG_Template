@@ -5,8 +5,9 @@ public class Barbarian extends Player {
 	int Mp = 20;
 	double dodge = 20.0;
 	int potions = 10;
+	
 	Barbarian() {
-
+		super(150, 150, 20, 20.0, 10);
 	}
 
 	@Override
@@ -57,5 +58,15 @@ public class Barbarian extends Player {
 		}
 		//make the attacks
 
+	}
+	
+	@Override
+	public String toString() {
+		return "Hp: " + getHp() + " Mp: " + getMp() + " Potions: " + getPotions();
+	}
+
+	@Override
+	public String readAttacks() {
+		return null;
 	}
 }

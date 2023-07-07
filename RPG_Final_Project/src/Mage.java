@@ -5,8 +5,9 @@ public class Mage extends Player {
 	int Mp = 100;
 	double dodge = 25.0;
 	int potions = 5;
+	
 	Mage(){
-
+		super(80, 80, 100, 25.0, 5);
 	}
 
 	@Override
@@ -61,7 +62,16 @@ public class Mage extends Player {
 		}
 	}	
 
+	@Override
+	public String toString() {
+		return "Hp: " + getHp() + " Mp: " + getMp() + " Potions: " + getPotions();
+	}
 
+	@Override
+	public String readAttacks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
