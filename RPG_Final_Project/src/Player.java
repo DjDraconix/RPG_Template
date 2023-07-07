@@ -48,6 +48,9 @@ public abstract class Player {
 
 	public void takeDamage(int damage) {
 		Hp -= damage;
+		if (Hp < 0) {
+			Hp = 0;
+		}
 	}
 
 	public abstract int attack();
