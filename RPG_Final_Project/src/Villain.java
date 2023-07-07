@@ -1,15 +1,15 @@
 
 public abstract class Villain {
 	int Hp;
-	int HpMax;
-	double dodge;
+	float dodge;
 
 	boolean burn = false;
 	boolean freez = false;
 	boolean stun = false;
 	
-	Villain() {
-		
+	Villain(int nHp, float nDodge) {
+		Hp = nHp;
+		dodge = nDodge;
 	}
 	
 	public void toggleBurn() {
@@ -65,12 +65,12 @@ public abstract class Villain {
 	
 	public abstract String toString();
 	
-	public abstract int attac1();
+	public abstract int attack1();
 	
 	public abstract int attack2();
 	
 	public abstract int sAttack();
 	
-	public abstract void special();
+	public abstract int special();
 	
 }
