@@ -15,6 +15,7 @@ public class Barbarian extends Player {
 	@Override
 	public int attack() {
 		// Powerful Axe attack
+		System.out.println("You hit with your powerfull axe");
 		return ((int)(Math.random() * 5) + 20);
 	}
 
@@ -23,6 +24,7 @@ public class Barbarian extends Player {
 		// Red Rune, can proc burn
 		if (Mp > 0) {
 			Mp--;
+			System.out.println("You use the Red Rune");
 			return 1;
 		} else {
 			return 0;
@@ -34,6 +36,7 @@ public class Barbarian extends Player {
 		// Blue Rune, can proc freez
 		if (Mp > 0) {
 			Mp--;
+			System.out.println("You use the Blue Rune");
 			return 1;
 		} else {
 			return 0;
@@ -45,6 +48,7 @@ public class Barbarian extends Player {
 		// Yellow Rune, can proc stun
 		if (Mp > 0) {
 			Mp--;
+			System.out.println("You use the Yellow Rune");
 			return 1;
 		} else {
 			return 0;
@@ -57,6 +61,7 @@ public class Barbarian extends Player {
 		if (Mp > 0) {
 			Mp -= 10;
 			Hp += 50;
+			System.out.println("You enter a rage state and swing wildly");
 		}
 		return 1;
 		//make the attacks
@@ -70,6 +75,7 @@ public class Barbarian extends Player {
 
 	@Override
 	public String readAttacks() {
-		return "1) Axe Swing: 2) Red Rune 1 Mp: 3) Blue Rune 1 Mp: 4) Yellow Rune 1 Mp: 5) Rage 10 Mp";
+		return "1) Axe Swing: 2) Red Rune 1 Mp: 3) Blue Rune 1 Mp: 4) Yellow Rune 1 Mp: "
+				+ "5) Rage 10 Mp: 6) Use Potion";
 	}
 }

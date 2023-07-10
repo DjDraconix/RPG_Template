@@ -78,31 +78,35 @@ public class BattleGround {
 	static void gameLoop(Player character, Villain creature, Scanner in) {
 		boolean run = true;
 		int userInput;
+		int cAction;
 		while (run) {
 			System.out.println("Your turn");
 			System.out.println(character.toString());
 			System.out.println(character.readAttacks());
 			userInput = in.nextInt();
-			
-			while (userInput > 5 || userInput < 1) {
+
+			while (userInput > 6 || userInput < 1) {
 				System.out.println("Please enter a correct ipnput");
 				userInput = in.nextInt();
 			}
-			
+
 			if (character.isBurned()) {
+				System.out.println("You are Burned and take burn damage");
 				character.takeDamage((int) ((Math.random() * 5) + 10));
 				character.toggleBurn();
 			}
 			if (character.isFrozen()) {
+				System.out.println("You are Frozen and take frost damage");
 				character.takeDamage((int) ((Math.random() * 5) + 10));
 				character.toggleFreez();
 				userInput = 0;
 			}
 			if (character.isStuned()) {
+				System.out.println("You are Stuned");
 				character.toggleStun();
 				userInput = 0;
 			}
-			
+
 			switch (userInput) {
 			case 0: System.out.println("You are unable to move");
 			break;
@@ -149,38 +153,133 @@ public class BattleGround {
 				creature.takeDamage(character.attack());
 			}
 			break;
+			case 6: character.usePotion();
+			break;
 			}
+
+			System.out.println(creature.toString());
 			
-			int cAction = (int) ((Math.random() * 4) + 1);
+			cAction = (int) ((Math.random() * 3) + 1);
+			
 			if (creature.isBurned()) {
+				System.out.println("The creature is burned");
 				creature.takeDamage((int) ((Math.random() * 5) + 10));
 				creature.toggleBurn();
 			}
 			if (creature.isFrozen()) {
+				System.out.println("The creature is frozen");
 				creature.takeDamage((int) ((Math.random() * 5) + 5));
 				creature.toggleFreez();
 				cAction = 0;
 			}
 			if (creature.isStuned()) {
+				System.out.println("The creature is stuned");
 				creature.toggleStun();
 				cAction = 0;
 			}
-			
-			switch (cAction) {
-			case 0: System.out.println("The creature is unable to move");
+
+			if (creature.getHp() != 0) {
+				switch (cAction) {
+				case 0: System.out.println("The creature is unable to move");
 				break;
-			case 1: character.takeDamage(creature.attack1());
+				
+				case 1: if (character.getDodge() > (Math.random() * 100)) {
+					character.takeDamage(creature.attack1());
+				}
 				break;
-			case 2: character.takeDamage(creature.attack1());
+				
+				case 2: if (character.getDodge() > (Math.random() * 100)) {
+					character.takeDamage(creature.attack2());
+				}
 				break;
-			case 3: 
-				break;
-			case 4: 
-				break;
+
+				case 3: 
+					switch (creature.sAttack()) {
+					case 1: if (Math.random() * 100 > 66.6) {
+						character.toggleStun();
+					}
+					break;
+					case 2: if (Math.random() * 100 > 66.6) {
+						character.toggleStun();
+					}
+					if (Math.random() * 100 > 66.6) {
+						character.toggleBurn();
+					}
+					if (Math.random() * 100 > 66.6) {
+						character.toggleFreez();
+					}
+					break;
+					case 3: 
+						character.takeDamage((int)(Math.random() * 5) + 5);
+						break;
+					case 4: 
+						switch ((int) (Math.random() * 3)) {
+						case 1: if (Math.random() * 100 > 66.6) {
+							character.toggleStun();
+						}
+						break;
+						case 2: if (Math.random() * 100 > 66.6) {
+							character.toggleBurn();
+						}
+						break;
+						case 3: if (Math.random() * 100 > 66.6) {
+							character.toggleFreez();
+						}
+						break;
+						}
+						break;
+					}
+					break;
+
+				case 4: 
+					switch (creature.special()) {
+					case 0: creature.regenerate(); 
+					break;
+					case 1: for (int i = 0; i < 3; i++) {
+						if (Math.random() * 100 > 66.6 && !character.isBurned()) {
+							character.toggleStun();
+						}
+						if (Math.random() * 100 > 66.6 && !character.isStuned()) {
+							character.toggleBurn();
+						}
+						if (Math.random() * 100 > 66.6 && !character.isFrozen()) {
+							character.toggleFreez();
+						}
+					}
+					break;
+					case 2: creature.setDodge();
+					break;
+					case 3: for (int i = 0; i < 2; i++) {
+						if (character.getDodge() > (Math.random() * 100)) {
+							character.takeDamage(creature.attack1());
+						}
+					}
+					for (int i = 0; i < 2; i++) {
+						if (character.getDodge() > (Math.random() * 100)) {
+							character.takeDamage(creature.attack2());
+						}
+					}
+					switch ((int) (Math.random() * 3)) {
+					case 1: if (Math.random() * 100 > 66.6) {
+						character.toggleStun();
+					}
+					break;
+					case 2: if (Math.random() * 100 > 66.6) {
+						character.toggleBurn();
+					}
+					break;
+					case 3: if (Math.random() * 100 > 66.6) {
+						character.toggleFreez();
+					}
+					break;
+					}
+					break;
+					}
+					break;
+				}
 			}
 
-			
-			System.out.println(creature.toString());
+
 			if (character.getHp() == 0 || creature.getHp() == 0) {
 				run = false;
 			}
@@ -188,7 +287,8 @@ public class BattleGround {
 		if (character.getHp() == 0) {
 			System.out.println("You have lost, Try agian");
 		} else {
-			System.out.println("You defeated the creature, Please play again");
+			System.out.println(creature.toString()
+					+ ". You defeated the creature, Please play again");
 		}
 	}
 }

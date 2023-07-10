@@ -14,26 +14,36 @@ public class Slime extends Villain{
 
 	@Override
 	public int attack1() {
-		// a light jump attack
+		System.out.println("The Slime tackles you");
 		return (int) ((Math.random() * 5) + 1);
 	}
 
 	@Override
 	public int attack2() {
-		// a light smack with a psudopod
+		System.out.println("The Slime smacks you with a psudopod");
 		return (int) ((Math.random() * 5) + 3);
 	}
 
 	@Override
 	public int sAttack() {
-		// This will have the slime attempt to cover the apponent in slime to proc stun
+		System.out.println("The Slime attempts to engulf you");
 		return 1;
 	}
 
 	@Override
 	public int special() {
-		// collect slime to gain back health
+		System.out.println("The Slime collects slime to gain back health");
 		return 0;
+	}
+	
+	public void regenerate() {
+		Hp += 30;
+	}
+
+	@Override
+	protected void setDodge() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

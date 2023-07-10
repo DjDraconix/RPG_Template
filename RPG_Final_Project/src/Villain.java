@@ -72,5 +72,9 @@ public abstract class Villain {
 	public abstract int sAttack();
 	
 	public abstract int special();
+
+	protected abstract void regenerate();
+
+	protected abstract void setDodge();
 	
 }

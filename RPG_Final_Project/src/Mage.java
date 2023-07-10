@@ -15,6 +15,7 @@ public class Mage extends Player {
 	@Override
 	public int attack() {
 		// A week staff attack
+		System.out.println("You hit with your staff");
 		return ((int)(Math.random() * 5) + 2);
 	}
 
@@ -22,7 +23,8 @@ public class Mage extends Player {
 	public int sAttack1() {
 		// Fire Ball, can proc burn
 		if (Mp > 5) {
-			Mp -= 5;	
+			Mp -= 5;
+			System.out.println("You shoot a Fire Ball");
 			return ((int)(Math.random() * 5) + 10);
 		} else {
 			return 0;
@@ -33,7 +35,8 @@ public class Mage extends Player {
 	public int sAttack2() {
 		// Frost Ray, can proc freez
 		if (Mp > 5) {
-			Mp -= 5;	
+			Mp -= 5;
+			System.out.println("You cast Frost Ray");
 			return ((int)(Math.random() * 5) + 10);
 		} else {
 			return 0;
@@ -44,7 +47,8 @@ public class Mage extends Player {
 	public int sAttack3() {
 		// Lightning Strike, can proc stun
 		if (Mp > 5) {
-			Mp -= 5;	
+			Mp -= 5;
+			System.out.println("You hit a Lightning Strike");
 			return ((int)(Math.random() * 5) + 10);
 		} else {
 			return 0;
@@ -56,6 +60,7 @@ public class Mage extends Player {
 		// Consume a potion to raise mp and hp
 		if (potions > 0) {
 			potions--;
+			System.out.println("You drink a mana potion restoring Hp and Mp");
 			Hp += ((int)(Math.random() * 15) + 5);
 			if (Hp > HpMax) {
 				Hp = HpMax;
@@ -73,7 +78,7 @@ public class Mage extends Player {
 	@Override
 	public String readAttacks() {
 		return "1) Staff Attack: 2) Fire Ball 5 Mp: 3) Frost Ray 5 Mp: 4) Lightning Strike "
-				+ "5 Mp: 5) Mana Potion";
+				+ "5 Mp: 5) Mana Potion: 6) Use Potion";
 	}
 
 

@@ -14,26 +14,38 @@ public class OrcShaman extends Villain{
 	
 	@Override
 	public int attack1() {
-		// A weak attack with a stick
+		System.out.println("The Orc attacks you with a stick");
 		return (int) ((Math.random() * 5) + 5);
 	}
 	
 	@Override
 	public int attack2() {
-		// the orc causes the surrounding trees to smack the player
+		System.out.println("The Orc causes the surrounding trees to smack you");
 		return (int) ((Math.random() * 5) + 7);
 	}
 	
 	@Override
 	public int sAttack() {
-		// A weak spell that can proc burn, freez and stun
+		System.out.println("The Orc casts a Hex");
 		return 2;
 	}
 	
 	@Override
 	public int special() {
-		// This should allow the orc to make three casts of the sAttack()
+		System.out.println("Hexes flow from the Orc chainging reality");
 		return 1;
+	}
+
+	@Override
+	protected void regenerate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void setDodge() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

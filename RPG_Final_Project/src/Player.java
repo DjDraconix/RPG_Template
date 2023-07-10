@@ -1,4 +1,4 @@
- 
+
 public abstract class Player {
 	int Hp;
 	int HpMax;
@@ -21,7 +21,7 @@ public abstract class Player {
 		dodge = nDodge;
 		potions = nPotions;
 	}
-	
+
 	public void toggleBurn() {
 		if (burn == false) {
 			burn = true;
@@ -64,21 +64,24 @@ public abstract class Player {
 	public abstract int buff();
 
 	public void usePotion() {
-		Hp += ((int)(Math.random() * 15) + 5);
-		if (Hp > HpMax) {
-			Hp = HpMax;
+		if (potions > 0) {
+			potions--;
+			Hp += ((int)(Math.random() * 15) + 5);
+			if (Hp > HpMax) {
+				Hp = HpMax;
+			}
 		}
 
 	}
-	
+
 	public boolean isBurned() {
 		return burn;
 	}
-	
+
 	public boolean isFrozen() {
 		return freez;
 	}
-	
+
 	public boolean isStuned() {
 		return stun;
 	}
@@ -86,27 +89,27 @@ public abstract class Player {
 	public int getMp() {
 		return Mp;
 	}
-	
+
 	public void setMp (int mp) {
 		Mp = Mp + mp;
 	}
-	
+
 	public int getHp() {
 		return Hp;
 	}
-	
-	public double getDouble() {
+
+	public double getDodge() {
 		return dodge;
 	}
-	
+
 	public int getPotions() {
 		return potions;		
 	}
 
 	public abstract String toString();
-	
+
 	public abstract String readAttacks();
-	
+
 	public abstract int UsedMp();
-	
+
 }
