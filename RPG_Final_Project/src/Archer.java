@@ -1,13 +1,15 @@
 
 public class Archer extends Player{
-	int Hp = 80;
-	int HpMax = 80;
-	int Mp = 50;
-	double dodge = 75.0;
-	int potions = 10;
+	
+	int UsedMp = 5;
 	
 	Archer() {
-		super(80, 80, 50, 75.0, 10);
+		super(80, 80, 50, 55.0f, 10);
+	}
+	
+	@Override
+	public int UsedMp() {
+		return UsedMp;
 	}
 
 	@Override
@@ -50,12 +52,13 @@ public class Archer extends Player{
 	}
 
 	@Override
-	public void buff() {
+	public int buff() {
 		// Uses Mp to improve dodge chance
 		if (Mp > 20) {
 			Mp -= 20;
 			dodge += 10;
 		}
+		return 0;
 	}
 
 	@Override
@@ -65,8 +68,8 @@ public class Archer extends Player{
 
 	@Override
 	public String readAttacks() {
-		// TODO Auto-generated method stub
-		return null;
+		return "1) Shoot Bow: 2) Torch Arrow 5 Mp: 3) Frost Blast Arrow 5 Mp: "
+				+ "4) Flash Bang Arrow 5 Mp: 5) Evade 20 Mp";
 	}
 
 }

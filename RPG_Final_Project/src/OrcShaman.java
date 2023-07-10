@@ -4,7 +4,7 @@ public class OrcShaman extends Villain{
 	double dodge = 25.0;
 	
 	OrcShaman() {
-		super(90, 25.0);
+		super(90, 25.0f);
 	}
 	
 	@Override

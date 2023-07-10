@@ -4,7 +4,7 @@ public class Assassin extends Villain{
 	double dodge = 30.0;
 	
 	Assassin() {
-		super(100, 30.0);
+		super(100, 30.0f);
 	}
 	
 	@Override

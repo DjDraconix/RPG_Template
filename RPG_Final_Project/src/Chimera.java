@@ -4,7 +4,7 @@ public class Chimera extends Villain {
 	double dodge = 35.0;
 	
 	Chimera() {
-		super(170, 35.0);
+		super(170, 35.0f);
 	}
 	
 	@Override

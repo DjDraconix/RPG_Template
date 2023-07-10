@@ -3,7 +3,7 @@ public abstract class Player {
 	int Hp;
 	int HpMax;
 	int Mp;
-	double dodge;
+	float dodge;
 	int potions;
 
 	boolean burn = false;
@@ -14,7 +14,7 @@ public abstract class Player {
 
 	}
 
-	Player(int nHp, int nHpMax, int nMp, double nDodge, int nPotions) {
+	Player(int nHp, int nHpMax, int nMp, float nDodge, int nPotions) {
 		Hp = nHp;
 		HpMax = nHpMax;
 		Mp = nMp;
@@ -61,7 +61,7 @@ public abstract class Player {
 
 	public abstract int sAttack3();
 
-	public abstract void buff();
+	public abstract int buff();
 
 	public void usePotion() {
 		Hp += ((int)(Math.random() * 15) + 5);
@@ -87,6 +87,10 @@ public abstract class Player {
 		return Mp;
 	}
 	
+	public void setMp (int mp) {
+		Mp = Mp + mp;
+	}
+	
 	public int getHp() {
 		return Hp;
 	}
@@ -102,5 +106,7 @@ public abstract class Player {
 	public abstract String toString();
 	
 	public abstract String readAttacks();
+	
+	public abstract int UsedMp();
 	
 }

@@ -1,13 +1,15 @@
 
 public class Barbarian extends Player {
-	int Hp = 150;
-	int HpMax = 150;
-	int Mp = 20;
-	double dodge = 20.0;
-	int potions = 10;
+	
+	int UsedMp = 1;
 	
 	Barbarian() {
-		super(150, 150, 20, 20.0, 10);
+		super(150, 150, 20, 20.0f, 10);
+	}
+	
+	@Override
+	public int UsedMp() {
+		return UsedMp;
 	}
 
 	@Override
@@ -50,12 +52,13 @@ public class Barbarian extends Player {
 	}
 
 	@Override
-	public void buff() {
+	public int buff() {
 		// Rage, gain 50 hp and make two attacks
 		if (Mp > 0) {
 			Mp -= 10;
 			Hp += 50;
 		}
+		return 1;
 		//make the attacks
 
 	}
@@ -67,6 +70,6 @@ public class Barbarian extends Player {
 
 	@Override
 	public String readAttacks() {
-		return null;
+		return "1) Axe Swing: 2) Red Rune 1 Mp: 3) Blue Rune 1 Mp: 4) Yellow Rune 1 Mp: 5) Rage 10 Mp";
 	}
 }

@@ -1,13 +1,15 @@
 
 public class Mage extends Player {
-	int Hp = 80;
-	int HpMax = 80;
-	int Mp = 100;
-	double dodge = 25.0;
-	int potions = 5;
+
+	int UsedMp = 5;
 	
 	Mage(){
-		super(80, 80, 100, 25.0, 5);
+		super(80, 80, 100, 25.0f, 5);
+	}
+	
+	@Override
+	public int UsedMp() {
+		return UsedMp;
 	}
 
 	@Override
@@ -50,7 +52,7 @@ public class Mage extends Player {
 	}
 
 	@Override
-	public void buff() {
+	public int buff() {
 		// Consume a potion to raise mp and hp
 		if (potions > 0) {
 			potions--;
@@ -60,6 +62,7 @@ public class Mage extends Player {
 			}
 			Mp += ((int)(Math.random() * 15) + 5);
 		}
+		return 0;
 	}	
 
 	@Override
@@ -69,8 +72,8 @@ public class Mage extends Player {
 
 	@Override
 	public String readAttacks() {
-		// TODO Auto-generated method stub
-		return null;
+		return "1) Staff Attack: 2) Fire Ball 5 Mp: 3) Frost Ray 5 Mp: 4) Lightning Strike "
+				+ "5 Mp: 5) Mana Potion";
 	}
 
 
