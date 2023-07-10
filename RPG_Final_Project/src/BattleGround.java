@@ -157,13 +157,26 @@ public class BattleGround {
 				creature.toggleBurn();
 			}
 			if (creature.isFrozen()) {
-				creature.takeDamage((int) ((Math.random() * 5) + 10));
+				creature.takeDamage((int) ((Math.random() * 5) + 5));
 				creature.toggleFreez();
 				cAction = 0;
 			}
 			if (creature.isStuned()) {
 				creature.toggleStun();
 				cAction = 0;
+			}
+			
+			switch (cAction) {
+			case 0: System.out.println("The creature is unable to move");
+				break;
+			case 1: character.takeDamage(creature.attack1());
+				break;
+			case 2: character.takeDamage(creature.attack1());
+				break;
+			case 3: 
+				break;
+			case 4: 
+				break;
 			}
 
 			
